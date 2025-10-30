@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class MoivesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'moives'
+    name = 'movies'
