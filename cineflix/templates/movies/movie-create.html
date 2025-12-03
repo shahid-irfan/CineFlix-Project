@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% block section %}
+<section id="create-movie" class="py-5 my-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+
+        <div class="card shadow-lg border-0 rounded-4">
+          <div class="card-header bg-primary text-white text-center py-3">
+            <h3 class="mb-0">🎬 Create New Movie</h3>
+          </div>
+
+          <div class="card-body p-4">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+              <!-- Movie Name -->
+              <div class="mb-3">
+                <label for="name" class="form-label fw-bold">Movie Name</label>
+                <!-- <input type="text" id="name" name="name" class="form-control" placeholder="Enter movie name" required> -->
+
+                 <!-- python form class cheyannunath given below -->
+                  {{form.name}}
+
+                   {% if form.name.errors %}
+                   <!-- error undakill mataram namal p tag work aakum 
+                    inspect cheyumbol ariyan pettum p tagill-->
+
+                   <p class="text-danger small">{{form.name.errors.0}}</p>  
+                   <!-- 0 Use it when you only want to display a single error, usually the first one  -->
+                   {% endif %}
+
+                   
+
+                  
+
+              </div>
+
+              <!-- Banner Image -->
+              <div class="mb-3">
+                <label for="photo" class="form-label fw-bold">Banner Image</label>
+                <!-- <input type="file" id="photo" name="photo" class="form-control" required> -->
+
+                {{form.photo}}
+
+                 {% if form.photo.errors %}
+                   <p class="text-danger small">{{form.photo.errors.0}}</p>
+                   {% endif %}
+
+              </div>
+
+              <!-- Description -->
+              <div class="mb-3">
+                <label for="description" class="form-label fw-bold">Description</label>
+                <!-- <textarea id="description" name="description" class="form-control" rows="3" placeholder="Enter movie description" required></textarea> -->
+
+                {{form.description}}
+
+                {% if form.desctiption.errors %}
+                   <p class="text-danger small">{{form.description.errors.0}}</p>
+                   {% endif %}
+              </div>
+
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="release_date" class="form-label fw-bold">Release Date</label>
+                  <!-- <input type="date" id="release_date" name="release_date" class="form-control" required> -->
+
+                  {{form.release_date}}
+
+                  {% if form.release_date.errors %}
+                   <p class="text-danger small">{{form.release_date.errors.0}}</p>
+                   {% endif %}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label for="runtime" class="form-label fw-bold">Runtime</label>
+                  <!-- <input type="time" id="runtime" name="runtime" class="form-control" required> -->
+
+                  {{form.runtime}}
+
+                  {% if form.runtime.errors %}
+                   <p class="text-danger small">{{form.runtime.errors.0}}</p>
+                   {% endif %}
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <label for="certification" class="form-label fw-bold">Certification</label>
+                  <!-- <select id="certification" name="certification" class="form-select" required> -->
+
+                    {{form.certification}}
+
+                    {% if form.certification.errors %}
+                   <p class="text-danger small">{{form.certification.errors.0}}</p>
+                   {% endif %}
+
+                    <!-- thazhe kannunna athrayum codentey pakaram annu namal aa form tag {{form.certification}} vech use cheyunne -->
+
+                    <!-- <option value="{{ choice.value }}" disabled selected>Select</option>
+
+                    {% for choice in certificatechoices %}
+                    <option value="">{{ choice.label }}</option>
+
+                    {% endfor %} -->
+                    <!-- <option value="U"></option>
+                    <option value="UA">UA</option>
+                    <option value="A">A</option> -->
+                  <!-- </select> -->
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="industry" class="form-label fw-bold">Industry</label>
+
+                  <!-- <select id="industry" name="industry" class="form-select" required>
+                    <option value="" disabled selected>Select Industry</option>
+
+                    {% for choice in industrychoices %}
+                    <option value="{{ choice.value }}">{{ choice.label }}</option>
+
+                    {% endfor %} -->
+                    <!-- <option value="Hollywood">Hollywood</option>
+                    <option value="Kollywood">Kollywood</option>
+                    <option value="Tollywood">Tollywood</option>
+                    <option value="Tollywood">Mollywood</option> -->
+
+                  <!-- </select> -->
+
+                  {{form.industry}}
+
+                  {% if form.industry.errors %}
+                   <p class="text-danger small">{{form.industry.errors.0}}</p>
+                   {% endif %}
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="languages" class="form-label fw-bold">Languages</label>
+                  <!-- <select id="languages" name="languages" multiple class="form-select"> -->
+                    {{form.languages}}
+                    {% if form.languages.errors %}
+                   <p class="text-danger small">{{form.languages.errors.0}}</p>
+                   {% endif %}
+                    <!-- <option value="" disabled selected>Select languages</option>
+
+                    {% for choice in languageschoices %}
+                    <option value="{{ choice.value }}">{{ choice.label }}</option>
+
+                    {% endfor %} -->
+                    <!-- <option value="English">English</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="Tamil">Tamil</option>
+                    <option value="Telugu">Telugu</option>
+                    <option value="Malayalam">Malayalam</option> -->
+                  <!-- </select> -->
+                  <small class="text-muted">Hold Ctrl (Windows) or Cmd (Mac) to select multiple</small>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="genre" class="form-label fw-bold">Genres</label>
+                  <!-- <select id="genre" name="genre" multiple class="form-select">
+
+                    <option value="" disabled selected>Select Genres</option>
+
+                    {% for choice in genrechoices %}
+                    <option value="{{ choice.value }}">{{ choice.label }}</option>
+
+                    {% endfor %} -->
+                    <!-- <option value="Action">Action</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Romance">Romance</option> -->
+                  <!-- </select> -->
+
+                  {{form.genre}}
+                  {% if form.genre.errors %}
+                   <p class="text-danger small">{{form.genre.errors.0}}</p>
+                   {% endif %}
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="artists" class="form-label fw-bold">Artists</label>
+                  <!-- <select id="artists" name="artists" multiple class="form-select">
+
+                     <option value="" disabled selected>Select Artists</option>
+
+                    {% for choice in artistchoices %}
+                    <option value="{{choice.value}}">{{ choice.label }}</option>
+
+                    {% endfor %} -->
+                    <!-- <option value="Actor1">Actor 1</option>
+                    <option value="Actor2">Actor 2</option>
+                    <option value="Actor3">Actor 3</option>
+                    <option value="Actor4">Actor 4</option> -->
+                  <!-- </select> -->
+
+                  {{form.artist}}
+                  {% if form.artist.errors %}
+                   <p class="text-danger small">{{form.artist.errors.0}}</p>
+                   {% endif %}
+                </div>
+              </div>
+
+              <!-- Video Embed URL -->
+              <div class="mb-3">
+                <label for="video" class="form-label fw-bold">Embed Video URL</label>
+                <!-- <input type="url" id="video" name="video" class="form-control" placeholder="Enter embedded video URL"> -->
+                 {{form.video}}
+                 {% if form.video.errors %}
+                   <p class="text-danger small">{{form.video.errors.0}}</p>
+                   {% endif %}
+                  <!-- namal ivde red color aaki..pinne naml name tag annu kanikkunne 
+                    .0 is used to aathiyathe aal mataram kanichal matti-->
+
+              </div>
+
+              <!-- Tags -->
+              <div class="mb-3">
+                <label for="tags" class="form-label fw-bold">Tags</label>
+                <!-- <textarea id="tags" name="tags" class="form-control" rows="2" placeholder="Comma-separated tags"></textarea> -->
+                {{form.tags}} 
+                {% if form.tags.errors %}
+                   <p class="text-danger small">{{form.tags.errors.0}}</p>
+                   {% endif %}
+              </div>
+
+              <div class="d-flex justify-content-end mt-4 btn-wrap">
+                <button type="submit" class="btn btn-outline-accent btn-accent-arrow">
+                  Save  <i class="icon icon-ns-arrow-right"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}

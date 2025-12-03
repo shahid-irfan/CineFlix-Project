@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block section %}
+
+	<section id="featured-books" class="py-5 my-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="d-flex justify-content-end btn-wrap">
+
+						<a href="{% url 'movie-create' %}" class="btn btn-outline-accent btn-accent-arrow" >Create Movie <i class="Icon icon-ns-arrow-right"></i></a>
+					</div>
+
+					<div class="section-header align-center">
+
+						
+						<h2 class="section-title">Movies</h2>
+					</div>
+
+					<div class="product-list">
+						<div class="row">
+							{% for movie in movies %}
+
+							<div class="col-md-3">
+								<div class="product-item">
+									<figure class="product-style">
+										<img src={{movie.photo.url}} alt="Books" class="product-item">
+										<a href="{% url 'movie-details' movie.uuid %}"><button type='button' class="add-to-cart" data-product-tile="add-to-cart">Watch</button></a>
+									<!-- movie id kodukkne view changes vech annu -->
+									</figure>
+									<figcaption>
+										<h3>{{movie.name}}</h3>
+										<span>
+
+											<ul style="display: flex; list-style: none; justify-content: center;">
+                                                <li  class="mx-4">{{ movie.release_date | date:'Y' }}</li>
+                                                <li class="mx-4">{{ movie.runtime | time:'h i' }}</li>
+                                                <li class="mx-4">{{ movie.certification }}</li>
+                                            </ul>
+											
+										</span>
+										<div class="item-price text-truncate">{{ movie.description }}</div>
+									</figcaption>
+								</div>
+							</div>
+
+							{% endfor %}
+
+						</div><!--ft-books-slider-->
+					</div><!--grid-->
+
+
+				</div><!--inner-content-->
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="btn-wrap align-right">
+						<a href="#" class="btn-accent-arrow">View all products <i
+								class="icon icon-ns-arrow-right"></i></a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+{% endblock %}			

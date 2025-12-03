@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block section %}
+
+<section class="container my-4">
+  <div class="card p-4 shadow-sm">
+    <div class="d-flex justify-content-between align-items-center">
+    <h4 class="mb-3">Profile Details</h4>
+    <a href="{% url 'password-otp' %}"class="btn btn-primary btn btn-rounded">change password</a>
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-4 fw-bold">Name:</div>
+      <div class="col-md-8">{{user.first_name}} {{user.last_name}}</div>
+      <!-- {{user.first_name}} enn kodutal userntey first name varum-->
+    </div>
+    <div class="row mb-2">
+      <div class="col-md-4 fw-bold">Email:</div>
+      <div class="col-md-8">{{user.email}}</div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-4 fw-bold">Phone Number:</div>
+      <div class="col-md-8"> {% if user.phone and user.phone_verified %} {{user.phone}} {% else %} <span class="mx-4"><a href="{% url 'add-phone' %}"><i class="fa fa-plus"></i>Add</a></span>{% endif %}</div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

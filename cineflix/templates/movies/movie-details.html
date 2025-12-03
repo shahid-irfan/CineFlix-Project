@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block section %}
+
+
+
+<!-- Hero Section -->
+
+  <section class="hero-section" style="background:url('{{movie.photo.url}}') center center/cover no-repeat;;">
+    <!-- backgroundill flim poster kodukkan vendi -->
+
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="display-5 fw-bold d-inline-block me-3">{{movie.name}}</h1>
+      <!-- moive name next pageill varan vendi annu movie.name kodukkane
+        -->
+
+        <!-- pen and edit in flim page(thudarum pageill annakill) -->
+      <a href="{% url 'movie-edit' movie.uuid %}"><i class="fa fa-solid fa-pen text-white mx-2"></i></a>
+      <a href="{% url 'movie-delete' movie.uuid %}"><i class="fa fa-solid fa-trash text-white mx-2"></i></a>
+
+      <div class="d-flex align-items-center mb-2">
+        
+
+        <span class="match me-3">{{movie.runtime | time:'H i'}}</span>
+        <span class="me-3">{{movie.release_date|date:'Y'}}</span>
+        <!-- year kannikan annu... release date annu and year specific ayeeitt kanikkan -->
+
+        <span class="badge bg-dark me-3 px-3 py-1 ">{{ movie.certification }}</span>
+        <!-- px and py ---  horizontal kuduthal and vertical kuravv -->
+        <span>{{movie.industry.name}}</span>
+        <!-- mollyhood,hollywood anno enn ariyan vendi -->
+         <!-- name ethinin??? -->
+      </div>
+      <p class="text-light mb-3">
+        {{movie.description}}
+      </p>
+
+      <div class="d-flex gap-2 mb-3">
+        <button class="btn btn-white text-dark rounded-pill "style='width: 150px;'><i class="fa-solid fa-play me-2"></i>Play</button>
+        <!-- play button round aakan ulla code -->
+        <button class="btn bg-dark btn-outline-light rounded-pill" style="width: 150px;"><i class="fa-solid fa-plus me-2"></i>My List</button>
+      </div>
+
+    
+
+      <p><strong>Starring:</strong> {% for artist in movie.artist.all %} {{artist.name}} {% endfor %}</p>
+      <!-- multiple select field annu nerthey cheythe 
+       .all koduthath m2m connection ayath kond + artist.name .....artist oru obj annuy-->
+      <p><strong>Genres:</strong> {% for gen in movie.genre.all %} {{gen.name}} {% endfor %}</p>
+      <p><strong>Available in </strong> {% for language in movie.languages.all %} {{language.name}} {% endfor %}</p>
+    </div>
+  </section>
+
+{% endblock %}

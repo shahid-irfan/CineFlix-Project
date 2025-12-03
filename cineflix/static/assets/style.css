@@ -2442,3 +2442,35 @@ footer#footer {
     width: 100%;
   }
 }
+
+
+
+
+
+ .hero-section {
+      position: relative;
+      
+      height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.9) 40%, rgba(0,0,0,0.1));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      margin-left: 80px;
+    }
+    .match {
+      color: #46d369;
+      font-weight: bold;
+    }
+    .info-text {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
